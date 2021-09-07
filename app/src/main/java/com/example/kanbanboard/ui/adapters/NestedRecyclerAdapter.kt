@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.DiffUtil
 import com.example.kanbanboard.BR
 import com.example.kanbanboard.R
 import com.example.kanbanboard.model.Card
@@ -42,8 +43,21 @@ class NestedRecyclerAdapter(items:List<com.example.kanbanboard.model.List>,liste
         Log.i("TAG",throwable.message.toString())
     }
 
+    override lateinit var diffUtil: DiffUtil.Callback
+    override fun setItems(newItems: List<com.example.kanbanboard.model.List>) {
+        diffUtil=ListDiffUtil(getItems(),newItems)
+        super.setItems(newItems)
+    }
 
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+    class ListDiffUtil(
+        items: List<com.example.kanbanboard.model.List>,
+        newItems: List<com.example.kanbanboard.model.List>,
+    ) : BaseDiffUtil<com.example.kanbanboard.model.List>(items,newItems) {
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int)=
+            oldList[oldItemPosition].listId==newList[newItemPosition].listId
+
+    }
+    //    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
 //        return ItemViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.context),R.layout.item_recycle,parent,false))
 //
 //        when(viewType){

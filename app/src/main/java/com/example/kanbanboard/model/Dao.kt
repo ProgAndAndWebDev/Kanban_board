@@ -4,7 +4,6 @@ import androidx.room.*
 import androidx.room.Dao
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
 
 @Dao
 interface Dao {
@@ -48,7 +47,7 @@ interface Dao {
      fun delete(item: Item):Completable
 
 
-    @Query("SELECT * FROM Board_Table")
+    @Query("SELECT * FROM Board_Table ORDER BY lastUpdateDate DESC")
     fun getAllBoard(): Observable<kotlin.collections.List<Board>>
 
     @Query("SELECT * FROM Card_Table")
@@ -69,6 +68,9 @@ interface Dao {
 
     @Query("SELECT * FROM List_Table WHERE boardId == :boardId ")
     fun getListsByBoardId(boardId:Int): Observable<kotlin.collections.List<List>>
+
+    @Query("SELECT * FROM Board_Table WHERE title LIKE :keyword ORDER BY lastUpdateDate DESC")
+    fun filterByName (keyword:String): Observable<kotlin.collections.List<Board>>
 
 
 

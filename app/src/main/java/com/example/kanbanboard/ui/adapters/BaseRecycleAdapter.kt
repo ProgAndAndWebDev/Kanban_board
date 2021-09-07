@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kanbanboard.BR
 
@@ -31,10 +32,11 @@ abstract class BaseRecycleAdapter<T>(private var items:List<T>, val listener: Ba
             }
         }
     }
-
-    fun setItems(newItems:List<T>){
+    abstract val diffUtil:DiffUtil.Callback
+    open fun setItems(newItems:List<T>){
+        val diffResult= DiffUtil.calculateDiff(diffUtil)
         items=newItems
-        notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     fun getItems() = items

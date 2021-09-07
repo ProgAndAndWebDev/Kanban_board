@@ -23,4 +23,7 @@ object Repository {
 
     fun getListsByBoardId(boardId:Int)=
         dao.getListsByBoardId(boardId)
+
+    fun filterBoardByKeyword(keyword:String)=
+        dao.filterByName("$keyword%")
 }
