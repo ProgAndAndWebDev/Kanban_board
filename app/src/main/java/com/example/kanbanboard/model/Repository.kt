@@ -26,4 +26,10 @@ object Repository {
 
     fun filterBoardByKeyword(keyword:String)=
         dao.filterByName("$keyword%")
+
+    fun getAllCards(id:kotlin.collections.List<Int>)=
+        dao.getCardIntoList(id)
+    fun deleteBoard(board:Board)=
+        dao.delete(board)
+
 }

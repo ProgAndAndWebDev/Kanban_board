@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.kanbanboard.viewModels.NewBoardViewModel" />
+            type="com.example.kanbanboard.viewModels.NewListViewModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -24,7 +24,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Board Name"
+                android:hint="List Name"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="8dp"
                 android:maxLines="1"
@@ -32,36 +32,27 @@
                 app:counterMaxLength="35"
                 app:boxStrokeColor="#3e7fff"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/important">
+                app:layout_constraintBottom_toTopOf="@id/add_button">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="@={viewModel.boardName}"/>
+                    android:text="@={viewModel.listName}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <RadioButton
-                android:id="@+id/important"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/board_name"
-                app:layout_constraintBottom_toTopOf="@id/create_button"
-                android:layout_marginHorizontal="16dp"
-                android:checked="@={viewModel.important}"
-                android:text="important"/>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/create_button"
+                android:id="@+id/add_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginVertical="8dp"
                 android:background="@drawable/search"
                 android:backgroundTint="#3e7fff"
-                android:text="Create"
+                android:text="Add List"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/important" />
+                app:layout_constraintTop_toBottomOf="@+id/board_name" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -13,5 +13,14 @@ class BoardAdapter(itemsL:List<Board>,listener: BoardInteractionListener)
         diffUtil=BoardDiffUtil(getItems(),newItems)
         super.setItems(newItems)
     }
+    fun getBoardAt(position:Int)=
+        getItems()[position]
+//    fun removeItem(postion:Int){
+//        Repository.deleteBoard(getItems()[postion])
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe()
+//        notifyDataSetChanged()
+//    }
 
 }

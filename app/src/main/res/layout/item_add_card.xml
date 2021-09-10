@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="createListener"
+            type="com.example.kanbanboard.ui.adapters.ICreate" />
+        <variable
+            name="listId"
+            type="int" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/card_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Card"
+            android:onClick="@{() -> createListener.goToAddCard(listId)}"
+            android:background="@drawable/search"
+            android:padding="16dp" />
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

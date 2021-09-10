@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="com.example.kanbanboard.viewModels.HomeViewModel" />
+        <variable
+            name="deleteBoard"
+            type="com.example.kanbanboard.ui.adapters.ISwipeElemnt" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -77,6 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
+            app:swipe="@{deleteBoard}"
             app:items="@{viewModel.boards}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"

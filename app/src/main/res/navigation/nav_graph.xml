@@ -37,5 +37,29 @@
         <argument
             android:name="boardId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_boardFragment_to_newListDialog"
+            app:destination="@id/newListDialog" />
+        <action
+            android:id="@+id/action_boardFragment_to_cardDetailsFragment"
+            app:destination="@id/cardDetailsFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/newListDialog"
+        android:name="com.example.kanbanboard.ui.NewListDialog"
+        android:label="NewListDialog"
+        tools:layout="@layout/dialog_add_list">
+        <argument
+            android:name="boardId"
+            app:argType="integer" />
+    </dialog>
+    <fragment
+        android:id="@+id/cardDetailsFragment"
+        android:name="com.example.kanbanboard.ui.CardDetailsFragment"
+        android:label="CardDetailsFragment"
+        tools:layout="@layout/fragment_card_details">
+        <argument
+            android:name="listId"
+            app:argType="integer" />
     </fragment>
 </navigation>

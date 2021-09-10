@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.kanbanboard.ui.adapters.ISwipeElemnt
 import com.example.kanbanboard.model.Board
 import com.example.kanbanboard.model.Repository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -12,7 +13,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class HomeViewModel: ViewModel() {
+class HomeViewModel: ViewModel() , ISwipeElemnt {
 
     val boards=MutableLiveData<List<Board>>()
     val search= MutableStateFlow<String?>(null)
@@ -48,6 +49,13 @@ class HomeViewModel: ViewModel() {
 
     private fun onSuccess(list: List<Board>){
         boards.postValue(list)
+    }
+
+    override fun swipeBoard(board: Board) {
+        Repository.deleteBoard(board)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
     }
 
 }

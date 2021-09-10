@@ -72,6 +72,9 @@ interface Dao {
     @Query("SELECT * FROM Board_Table WHERE title LIKE :keyword ORDER BY lastUpdateDate DESC")
     fun filterByName (keyword:String): Observable<kotlin.collections.List<Board>>
 
+    @Query("SELECT * FROM Card_Table WHERE listId == :id")
+    fun getCardIntoList (id:kotlin.collections.List<Int>): Observable<kotlin.collections.List<Card>>
+
 
 
 }
